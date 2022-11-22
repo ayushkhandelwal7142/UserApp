@@ -19,7 +19,6 @@ import com.smarteist.autoimageslider.SliderView
 class HomeFragment : Fragment() {
 
     private lateinit var sliderView: SliderView
-    private lateinit var imgMap: ImageView
     private var sliderDataArrayList: ArrayList<SliderData> = arrayListOf()
     private lateinit var  sAdapter: SliderAdapter
 
@@ -27,7 +26,6 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         sliderView = view.findViewById(R.id.slider)
-        imgMap = view.findViewById(R.id.img_map)
         sAdapter = SliderAdapter(this@HomeFragment, sliderDataArrayList)
 
         val url1 = "https://www.geeksforgeeks.org/wp-content/uploads/gfg_200X200-1.png"
@@ -48,17 +46,6 @@ class HomeFragment : Fragment() {
             startAutoCycle()
         }
 
-        imgMap.setOnClickListener {
-            openMap()
-        }
-
         return view
-    }
-
-    private fun openMap() {
-       val uri = Uri.parse("geo:0, 0?q=Arya Cars, Gondia, Maharashtra")
-        val intent = Intent(Intent.ACTION_VIEW, uri)
-        intent.setPackage("com.google.android.apps.maps")
-        startActivity(intent)
     }
 }

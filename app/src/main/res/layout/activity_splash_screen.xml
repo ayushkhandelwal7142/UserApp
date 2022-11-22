@@ -1,18 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.splashScreen.SplashScreen">
+    tools:context=".ui.splashScreen.SplashScreen"
+    android:orientation="vertical"
+    android:background="@color/splash_screen"
+    android:gravity="center_horizontal">
 
-    <ImageView
+    <TextView
+        android:id="@+id/schoolName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/splash_logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="ABC SCHOOL"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/splash_animation"
+        android:layout_marginTop="80dp"/>
+    <TextView
+        android:id="@+id/adminApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student App"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        android:layout_marginTop="80dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

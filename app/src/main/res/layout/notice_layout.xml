@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     style="@style/Widget.Material3.CardView.Elevated"
-    app:cardBackgroundColor="@color/light_gray"
+    app:cardBackgroundColor="@color/colorEditTextBgColor"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"

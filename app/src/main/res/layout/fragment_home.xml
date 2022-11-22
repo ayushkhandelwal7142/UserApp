@@ -42,76 +42,153 @@
                    android:layout_height="match_parent"
                    android:orientation="vertical"
                    android:padding="25dp">
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="My College App"
-                       android:layout_gravity="center_horizontal"
-                       android:textStyle="bold"
-                       android:textSize="30dp"/>
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="@string/about"
-                       android:layout_gravity="center_horizontal"
-                       />
-                   <LinearLayout
+
+                   <com.google.android.material.card.MaterialCardView
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:orientation="vertical"
-                       android:layout_marginTop="10dp"
-                       android:background="@color/purple_200">
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="Departments"
-                           android:textStyle="bold"
-                           android:textSize="30sp"
-                           android:layout_gravity="center_horizontal"/>
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="CSE"
-                           android:textSize="25sp"
-                           android:layout_gravity="center_horizontal"/>
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="ME"
-                           android:textSize="25sp"
-                           android:layout_gravity="center_horizontal"/>
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="ECE"
-                           android:textSize="25sp"
-                           android:layout_gravity="center_horizontal"/>
-
-                   </LinearLayout>
-
-                   <LinearLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:orientation="vertical">
-
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="Contact Us"
-                           android:textStyle="bold"
-                           android:layout_gravity="center_horizontal"
-                           android:textSize="25dp"/>
-                       <ImageView
+                       android:layout_marginBottom="10dp">
+                       <LinearLayout
                            android:layout_width="match_parent"
-                           android:layout_height="100dp"
-                           android:src="@drawable/ic_maps"
-                           android:scaleType="centerCrop"
-                           android:id="@+id/img_map"/>
-                   </LinearLayout>
+                           android:layout_height="wrap_content"
+                           android:orientation="vertical"
+                           android:background="@color/splash_screen">
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="TODAY'S THOUGHT"
+                               android:layout_gravity="center_horizontal"
+                               android:textStyle="bold"
+                               android:textSize="30dp"/>
+                           <LinearLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:orientation="horizontal">
+                               <ImageView
+                                   android:layout_width="20sp"
+                                   android:layout_height="20sp"
+                                   android:src="@drawable/inverted_comma"
+                                   android:layout_marginEnd="10dp"/>
+
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="Work is worship"
+                                   android:textSize="20sp"
+                                   />
+                           </LinearLayout>
+                       </LinearLayout>
+
+                   </com.google.android.material.card.MaterialCardView>
+                   <com.google.android.material.card.MaterialCardView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginBottom="10dp">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="vertical"
+                           android:background="@color/splash_screen">
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="OUR VISION"
+                               android:layout_gravity="center_horizontal"
+                               android:textStyle="bold"
+                               android:textSize="30dp"/>
+                           <LinearLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:orientation="horizontal">
+                               <ImageView
+                                   android:layout_width="20sp"
+                                   android:layout_height="20sp"
+                                   android:src="@drawable/inverted_comma"
+                                   android:layout_marginEnd="10dp"/>
+
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="To serve people is humanity and to serve children is ust next to Godliness"
+                                   android:textSize="20sp"
+                                   />
+                           </LinearLayout>
+                       </LinearLayout>
+
+                   </com.google.android.material.card.MaterialCardView>
+                   <com.google.android.material.card.MaterialCardView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginBottom="10dp">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="vertical"
+                           android:background="@color/splash_screen">
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="OUR AIM"
+                               android:layout_gravity="center_horizontal"
+                               android:textStyle="bold"
+                               android:textSize="30dp"/>
+                           <LinearLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:orientation="horizontal">
+                               <ImageView
+                                   android:layout_width="20sp"
+                                   android:layout_height="20sp"
+                                   android:src="@drawable/inverted_comma"
+                                   android:layout_marginEnd="10dp"/>
+
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="To provide ample opportunities to the students to top their potential in one field or the other"
+                                   android:textSize="20sp"
+                                   />
+                           </LinearLayout>
+                       </LinearLayout>
+
+                   </com.google.android.material.card.MaterialCardView>
+                   <com.google.android.material.card.MaterialCardView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginBottom="10dp">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="vertical"
+                           android:background="@color/splash_screen">
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="WE BELIEVE IN"
+                               android:layout_gravity="center_horizontal"
+                               android:textStyle="bold"
+                               android:textSize="30dp"/>
+                           <LinearLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:orientation="horizontal">
+                               <ImageView
+                                   android:layout_width="20sp"
+                                   android:layout_height="20sp"
+                                   android:src="@drawable/inverted_comma"
+                                   android:layout_marginEnd="10dp"/>
+
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="To provide ample opportunities to the students to top their potential in one field or the other"
+                                   android:textSize="20sp"
+                                   />
+                           </LinearLayout>
+                       </LinearLayout>
+
+                   </com.google.android.material.card.MaterialCardView>
 
                </LinearLayout>
-
-
 
            </com.google.android.material.card.MaterialCardView>
 

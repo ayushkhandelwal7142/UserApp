@@ -23,6 +23,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var actionBarToggle: ActionBarDrawerToggle
     private lateinit var navigationDrawer: NavigationView
+    companion object {
+        var supportActionBarTitle = "User App"
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(actionBarToggle)
         actionBarToggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = supportActionBarTitle
 
         navigationDrawer.setNavigationItemSelectedListener {
             when(it.itemId) {

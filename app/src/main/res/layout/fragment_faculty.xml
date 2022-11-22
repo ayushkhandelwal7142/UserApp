@@ -16,14 +16,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CSE DEPARTMENT"
+                android:text="MATHS"
                 android:gravity="center"
+                android:textSize="25sp"
                 android:textStyle="bold"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#C1C1C1"
-                android:layout_marginVertical="8dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
@@ -38,19 +34,20 @@
                 android:id="@+id/cseNoData">
                 <include layout="@layout/no_data_available"/>
             </LinearLayout>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ME DEPARTMENT"
-                android:gravity="center"
-                android:textStyle="bold"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#C1C1C1"
                 android:layout_marginVertical="8dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SCIENCE"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
@@ -65,18 +62,18 @@
                 android:id="@+id/meNoData">
                 <include layout="@layout/no_data_available"/>
             </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ECE DEPARTMENT"
-                android:gravity="center"
-                android:textStyle="bold"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#C1C1C1"
                 android:layout_marginVertical="8dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ENGLISH"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:textStyle="bold"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
@@ -91,6 +88,11 @@
                 android:id="@+id/eceNoData">
                 <include layout="@layout/no_data_available"/>
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C1C1C1"
+                android:layout_marginVertical="8dp"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

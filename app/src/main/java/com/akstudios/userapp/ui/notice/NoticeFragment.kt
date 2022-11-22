@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.akstudios.userapp.MainActivity
 import com.akstudios.userapp.R
 import com.google.firebase.database.*
 
@@ -50,5 +51,15 @@ class NoticeFragment : Fragment() {
                 Toast.makeText(context, "Error" + error.message, Toast.LENGTH_LONG).show()
             }
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MainActivity.supportActionBarTitle = "Notice"
+    }
+
+    override fun onStart() {
+        super.onStart()
+        MainActivity.supportActionBarTitle = "Notice"
     }
 }
