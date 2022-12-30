@@ -14,6 +14,7 @@ import com.akstudios.userapp.MainActivity
 import com.akstudios.userapp.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.google.firebase.messaging.ktx.remoteMessage
 import java.util.*
 
 class FirebaseService: FirebaseMessagingService() {
@@ -32,8 +33,8 @@ class FirebaseService: FirebaseMessagingService() {
         val intent1 =
             PendingIntent.getActivities(this, 0, arrayOf(intent), PendingIntent.FLAG_ONE_SHOT)
         val notification: Notification = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("New Notification")
-            .setContentText("You have one new notification")
+            .setContentTitle(message.data["title"])
+            .setContentText(message.data["message"])
             .setSmallIcon(R.drawable.avtar)
             .setAutoCancel(true)
             .setContentIntent(intent1)
