@@ -2,85 +2,131 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_margin="8dp">
-
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1.5"
-            android:layout_margin="8dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Name:"
-                    android:layout_marginEnd="10dp"
-                    android:textSize="15sp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Name"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:id="@+id/facultyNameRV"/>
-            </LinearLayout>
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1.5"
+                android:layout_margin="8dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email:"
-                    android:layout_marginEnd="10dp"
-                    android:textSize="15sp" />
-                <TextView
-                    android:layout_width="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Name:"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:id="@+id/facultyNameRV"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:id="@+id/facultyEmailRV"/>
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Email:"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Email"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:id="@+id/facultyEmailRV"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Post:"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Post"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:id="@+id/facultyPostRV"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Contact No:"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Number"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:id="@+id/facultyContactNoRV"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/btnCallFaculty"
+                        android:layout_width="35sp"
+                        android:layout_height="35sp"
+                        android:src="@drawable/ic_call"
+                        android:layout_marginStart="10dp"/>
+                    <ImageView
+                        android:id="@+id/btnMailFaculty"
+                        android:layout_width="35sp"
+                        android:layout_height="35sp"
+                        android:src="@drawable/ic_mail"
+                        android:layout_marginStart="50dp"/>
+                </LinearLayout>
+
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Post:"
-                    android:layout_marginEnd="10dp"
-                    android:textSize="15sp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Post"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:id="@+id/facultyPostRV"/>
-            </LinearLayout>
-
+                android:layout_weight="0.5"
+                android:scaleType="fitXY"
+                android:layout_gravity="center"
+                android:src="@drawable/avtar"
+                android:id="@+id/facultyImage"/>
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:layout_gravity="center"
-            android:src="@drawable/avtar"
-            android:id="@+id/facultyImage"/>
+
+
     </LinearLayout>
+
+
 
 </com.google.android.material.card.MaterialCardView>

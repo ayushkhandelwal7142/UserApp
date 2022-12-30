@@ -12,7 +12,7 @@ import java.lang.Exception
 import java.net.HttpURLConnection
 import java.net.URL
 
-class PdfViewer : AppCompatActivity() {
+class PdfViewerActivity : AppCompatActivity() {
     private lateinit var url: String
     private lateinit var pdfViewer: PDFView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +23,7 @@ class PdfViewer : AppCompatActivity() {
         pdfViewer = findViewById(R.id.pdfView)
 
         val pdfDownload = PdfDownload()
-        pdfDownload.execute()
-
+        pdfDownload.execute(url)
     }
 
     inner class PdfDownload: AsyncTask<String, Void, InputStream>() {

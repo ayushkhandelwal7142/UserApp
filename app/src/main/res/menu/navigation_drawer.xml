@@ -4,13 +4,9 @@
         android:title="Video Lectures"/>
     <item android:id="@+id/navigation_eBook"
         android:title="E-Books"/>
-    <item android:id="@+id/navigation_theme"
-        android:title="Themes"/>
     <item android:id="@+id/navigation_website"
         android:title="Website"/>
     <item android:id="@+id/navigation_review"
         android:title="Rate Us"/>
-    <item android:id="@+id/navigation_developer"
-        android:title="Developer"/>
 
 </menu>

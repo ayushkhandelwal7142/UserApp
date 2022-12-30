@@ -52,14 +52,4 @@ class NoticeFragment : Fragment() {
             }
         })
     }
-
-    override fun onResume() {
-        super.onResume()
-        MainActivity.supportActionBarTitle = "Notice"
-    }
-
-    override fun onStart() {
-        super.onStart()
-        MainActivity.supportActionBarTitle = "Notice"
-    }
 }

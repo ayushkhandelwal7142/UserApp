@@ -1,6 +1,5 @@
 package com.akstudios.userapp.ui.ebook
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.akstudios.userapp.R
 import com.google.android.material.card.MaterialCardView
 
-class EbookAdapter(val context: Context, private val list: ArrayList<EbookData>): RecyclerView.Adapter<EbookAdapter.EbookViewHolder>() {
+class EbookAdapter(val context: EbookActivity, private val list: ArrayList<EbookData>): RecyclerView.Adapter<EbookAdapter.EbookViewHolder>() {
 
     inner class EbookViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.ebookTitle)
@@ -28,15 +27,15 @@ class EbookAdapter(val context: Context, private val list: ArrayList<EbookData>)
     }
 
     override fun onBindViewHolder(holder: EbookViewHolder, position: Int) {
-       holder.title.text = list[position].title
-        holder.ebook.setOnClickListener {
-           val intent = Intent(context, PdfViewer::class.java)
-            intent.putExtra("url", list[position].url)
+       holder.title.text = list[position].pdfTitle
+        holder.itemView.setOnClickListener {
+           val intent = Intent(context, PdfViewerActivity::class.java)
+            intent.putExtra("url", list[position].pdfUrl)
             context.startActivity(intent)
         }
         holder.btnDownload.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW)
-            intent.setData(Uri.parse(list.get(position).url))
+            intent.setData(Uri.parse(list[position].pdfUrl))
             context.startActivity(intent)
         }
     }

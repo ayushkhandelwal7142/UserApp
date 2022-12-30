@@ -11,10 +11,13 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.akstudios.userapp.notiication.Constants
 import com.akstudios.userapp.ui.ebook.EbookActivity
 import com.akstudios.userapp.ui.ebook.EbookAdapter
+import com.akstudios.userapp.ui.videoLectures.VideoLecturesActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,15 +26,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var actionBarToggle: ActionBarDrawerToggle
     private lateinit var navigationDrawer: NavigationView
-    companion object {
-        var supportActionBarTitle = "User App"
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        FirebaseMessaging.getInstance().subscribeToTopic(Constants.TOPIC)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         navController = Navigation.findNavController(this, R.id.frame_layout)
         drawerLayout = findViewById(R.id.drawer_layout)
@@ -40,26 +40,23 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(actionBarToggle)
         actionBarToggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = supportActionBarTitle
+        NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
         navigationDrawer.setNavigationItemSelectedListener {
             when(it.itemId) {
-                R.id.navigation_developer -> Toast.makeText(applicationContext, "Developer", Toast.LENGTH_LONG).show()
-                R.id.navigation_video -> Toast.makeText(applicationContext, "Video Lectures", Toast.LENGTH_LONG).show()
-                R.id.navigation_website -> Toast.makeText(applicationContext, "Website", Toast.LENGTH_LONG).show()
-                R.id.navigation_theme -> Toast.makeText(applicationContext, "Themes", Toast.LENGTH_LONG).show()
-                R.id.navigation_review -> {
-                    val intent = Intent(this, EbookActivity::class.java)
+                R.id.navigation_video -> {
+                    val intent = Intent(this, VideoLecturesActivity::class.java)
                     startActivity(intent)
                 }
-                R.id.navigation_eBook-> Toast.makeText(applicationContext, "E-Books", Toast.LENGTH_LONG).show()
-                else -> {
-                    Toast.makeText(this, "None of the above", Toast.LENGTH_LONG).show()
+                R.id.navigation_website -> Toast.makeText(applicationContext, "Website", Toast.LENGTH_LONG).show()
+                R.id.navigation_review -> Toast.makeText(applicationContext, "Review", Toast.LENGTH_LONG).show()
+                R.id.navigation_eBook-> {
+                val intent = Intent(this, EbookActivity::class.java)
+                startActivity(intent)
                 }
             }
-            return@setNavigationItemSelectedListener true
+            true
         }
-        NavigationUI.setupWithNavController(bottomNavigationView, navController)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

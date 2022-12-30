@@ -25,6 +25,7 @@
                app:sliderIndicatorEnabled="true"
                app:sliderIndicatorGravity="center_horizontal|bottom"
                app:sliderIndicatorMargin="15dp"
+               android:layout_marginTop="5dp"
                app:sliderIndicatorOrientation="horizontal"
                app:sliderIndicatorPadding="3dp"
                app:sliderIndicatorRadius="2dp"
