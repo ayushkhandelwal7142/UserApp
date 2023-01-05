@@ -1,6 +1,7 @@
 package com.akstudios.userapp
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -47,6 +48,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_video -> {
                     val intent = Intent(this, VideoLecturesActivity::class.java)
                     startActivity(intent)
+                }
+                R.id.navigation_attendance -> {
+                    val url = ""  // logged in users' class
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(url)
                 }
                 R.id.navigation_website -> Toast.makeText(applicationContext, "Website", Toast.LENGTH_LONG).show()
                 R.id.navigation_review -> Toast.makeText(applicationContext, "Review", Toast.LENGTH_LONG).show()

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akstudios.userapp.R
@@ -13,12 +14,12 @@ import com.google.firebase.database.*
 
 
 class FacultyFragment : Fragment() {
-    private lateinit var cseDept: RecyclerView
-    private lateinit var eceDept: RecyclerView
-    private lateinit var mechDept: RecyclerView
-    private lateinit var cseNoData: LinearLayout
-    private lateinit var eceNoData: LinearLayout
-    private lateinit var mechNoData: LinearLayout
+    private lateinit var mathsDeptRV: RecyclerView
+    private lateinit var scienceDeptRV: RecyclerView
+    private lateinit var englishDeptRV: RecyclerView
+    private lateinit var mathsNoData: LinearLayout
+    private lateinit var scienceNoData: LinearLayout
+    private lateinit var englishNoData: LinearLayout
     private lateinit var list1: ArrayList<FacultyData>
     private lateinit var list2: ArrayList<FacultyData>
     private lateinit var list3: ArrayList<FacultyData>
@@ -26,6 +27,9 @@ class FacultyFragment : Fragment() {
     private lateinit var databaseReference: DatabaseReference
     private lateinit var dbRef: DatabaseReference
     private lateinit var fAdapter: FacultyAdapter
+    private lateinit var pbMAths: ProgressBar
+    private lateinit var pbScience: ProgressBar
+    private lateinit var pbEnglish: ProgressBar
 
 
     override fun onCreateView(
@@ -34,13 +38,17 @@ class FacultyFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_faculty, container, false)
 
-        cseNoData = view.findViewById(R.id.cseNoData)
-        mechNoData = view.findViewById(R.id.meNoData)
-        eceNoData = view.findViewById(R.id.eceNoData)
-        cseDept = view.findViewById(R.id.cseRV)
-        mechDept = view.findViewById(R.id.meRV)
-        eceDept = view.findViewById(R.id.eceRV)
+        mathsNoData = view.findViewById(R.id.mathsNoData)
+        scienceNoData = view.findViewById(R.id.scienceNoData)
+        englishNoData = view.findViewById(R.id.englishNoData)
 
+        pbMAths = view.findViewById(R.id.pbMaths)
+        pbScience = view.findViewById(R.id.pbScience)
+        pbEnglish = view.findViewById(R.id.pbEnglish)
+
+        mathsDeptRV = view.findViewById(R.id.mathsRV)
+        scienceDeptRV = view.findViewById(R.id.scienceRV)
+        englishDeptRV = view.findViewById(R.id.englishRV)
 
         list1 = arrayListOf()
         list2 = arrayListOf()
@@ -49,33 +57,32 @@ class FacultyFragment : Fragment() {
 
         databaseReference = FirebaseDatabase.getInstance().reference.child("Faculty")
 
-        cseDepartment()
-        eceDepartment()
-        meDepartment()
+        mathsDepartment()
+        englishDepartment()
+        scienceDepartment()
 
         return view
     }
 
-    private fun cseDepartment() {
-        dbRef = databaseReference.child("CSE")
+    private fun mathsDepartment() {
+        dbRef = databaseReference.child("Maths")
         dbRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
-                   cseNoData.visibility = View.VISIBLE
-                    cseDept.visibility = View.GONE
+                    pbMAths.visibility = View.GONE
+                   mathsDeptRV.visibility = View.VISIBLE
                 } else {
-                    cseNoData.visibility = View.GONE
-                    cseDept.visibility = View.VISIBLE
                     for (i in snapshot.children) {
                         val data = i.getValue(FacultyData::class.java)
                         if (data != null) {
                             list1.add(data)
                         }
-                        fAdapter = FacultyAdapter(list1, "CSE", this@FacultyFragment)
-                        cseDept.apply {
+                        fAdapter = FacultyAdapter(list1, "Maths", this@FacultyFragment)
+                        mathsDeptRV.apply {
                             setHasFixedSize(true)
                             layoutManager = LinearLayoutManager(context)
                             adapter = fAdapter
+                            pbMAths.visibility = View.GONE
                         }
                     }
                 }
@@ -87,26 +94,25 @@ class FacultyFragment : Fragment() {
 
         })
     }
-    private fun eceDepartment() {
-        dbRef = databaseReference.child("ECE")
+    private fun englishDepartment() {
+        dbRef = databaseReference.child("English")
         dbRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
-                    eceNoData.visibility = View.VISIBLE
-                    eceDept.visibility = View.GONE
+                    pbEnglish.visibility = View.GONE
+                    englishNoData.visibility = View.VISIBLE
                 } else {
-                    eceNoData.visibility = View.GONE
-                    eceDept.visibility = View.VISIBLE
                     for (i in snapshot.children) {
                         val data = i.getValue(FacultyData::class.java)
                         if (data != null) {
                             list2.add(data)
                         }
-                        fAdapter = FacultyAdapter(list2, "ECE",  this@FacultyFragment)
-                        mechDept.apply {
+                        fAdapter = FacultyAdapter(list2, "English",  this@FacultyFragment)
+                        englishDeptRV.apply {
                             setHasFixedSize(true)
                             layoutManager = LinearLayoutManager(context)
                             adapter = fAdapter
+                            pbEnglish.visibility = View.GONE
                         }
                     }
                 }
@@ -118,26 +124,25 @@ class FacultyFragment : Fragment() {
 
         })
     }
-    private fun meDepartment() {
-        dbRef = databaseReference.child("ME")
+    private fun scienceDepartment() {
+        dbRef = databaseReference.child("Hindi")
         dbRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
-                    mechNoData.visibility = View.VISIBLE
-                    mechDept.visibility = View.GONE
+                    pbScience.visibility = View.GONE
+                    scienceNoData.visibility = View.VISIBLE
                 } else {
-                    mechNoData.visibility = View.GONE
-                    mechDept.visibility = View.VISIBLE
                     for (i in snapshot.children) {
                         val data = i.getValue(FacultyData::class.java)
                         if (data != null) {
                             list3.add(data)
                         }
-                        fAdapter = FacultyAdapter(list3, "ME", this@FacultyFragment)
-                        mechDept.apply {
+                        fAdapter = FacultyAdapter(list3, "Hindi", this@FacultyFragment)
+                        scienceDeptRV.apply {
                             setHasFixedSize(true)
                             layoutManager = LinearLayoutManager(context)
                             adapter = fAdapter
+                            pbScience.visibility = View.GONE
                         }
                     }
                 }

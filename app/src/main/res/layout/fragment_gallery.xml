@@ -34,7 +34,21 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/annualFunctionRV"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
+                <ProgressBar
+                    android:id="@+id/pbAnnual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"/>
+                <TextView
+                    android:id="@+id/txtAnnualNoData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No Data"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
@@ -62,6 +76,20 @@
                     android:id="@+id/independenceDayRV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+                <ProgressBar
+                    android:id="@+id/pbIndependence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"/>
+                <TextView
+                    android:id="@+id/txtIndependenceNoData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No Data"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
@@ -89,6 +117,20 @@
                     android:id="@+id/republicDayRV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+                <ProgressBar
+                    android:id="@+id/pbRepublic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"/>
+                <TextView
+                    android:id="@+id/txtRepublicNoData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No Data"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
@@ -102,7 +144,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Other Functions"
+                    android:text="Other Events"
                     android:layout_marginTop="5dp"
                     android:textSize="25sp"
                     android:layout_gravity="center_horizontal"
@@ -116,6 +158,19 @@
                     android:id="@+id/otherFunctionsRV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+                <ProgressBar
+                    android:id="@+id/pbOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"/>
+                <TextView
+                    android:id="@+id/txtOthersNoData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No Data"
+                    android:layout_gravity="center"
+                    android:visibility="gone"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

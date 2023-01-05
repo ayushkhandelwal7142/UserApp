@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +27,14 @@ class GalleryFragment : Fragment() {
     private lateinit var fAdapter: GalleryAdapter
     private lateinit var databaseReference: DatabaseReference
     private lateinit var galleryFragmentRV: RecyclerView
+    private lateinit var txtAnnualNoData: TextView
+    private lateinit var txtRepublicNoData: TextView
+    private lateinit var txtIndependenceNoData: TextView
+    private lateinit var txtOthersNoData: TextView
+    private lateinit var pbAnnual: ProgressBar
+    private lateinit var pbINdependence: ProgressBar
+    private lateinit var pbRepublic: ProgressBar
+    private lateinit var pbOther: ProgressBar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +48,14 @@ class GalleryFragment : Fragment() {
         republicDayRV = view.findViewById(R.id.republicDayRV)
         othersRV = view.findViewById(R.id.otherFunctionsRV)
         databaseReference = FirebaseDatabase.getInstance().reference.child("Gallery Images")
+        txtAnnualNoData = view.findViewById(R.id.txtAnnualNoData)
+        txtRepublicNoData = view.findViewById(R.id.txtRepublicNoData)
+        txtIndependenceNoData = view.findViewById(R.id.txtIndependenceNoData)
+        txtOthersNoData = view.findViewById(R.id.txtOthersNoData)
+        pbAnnual = view.findViewById(R.id.pbAnnual)
+        pbINdependence = view.findViewById(R.id.pbIndependence)
+        pbRepublic = view.findViewById(R.id.pbRepublic)
+        pbOther = view.findViewById(R.id.pbOther)
 
         getAnnualFunctionData()
         getIndependenceDayData()
@@ -53,7 +71,9 @@ class GalleryFragment : Fragment() {
             val list: ArrayList<GalleryData> = arrayListOf()
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
-                    Toast.makeText(context, "other events no data found", Toast.LENGTH_LONG).show()
+                    pbOther.visibility = View.GONE
+                    txtOthersNoData.visibility = View.VISIBLE
+                    //Toast.makeText(context, "other events no data found", Toast.LENGTH_LONG).show()
                 } else {
                     for (i in snapshot.children) {
                         val data = i.getValue(GalleryData::class.java)
@@ -64,6 +84,8 @@ class GalleryFragment : Fragment() {
                     fAdapter = GalleryAdapter(this@GalleryFragment, list)
                     othersRV.layoutManager = GridLayoutManager(context, 3)
                     othersRV.adapter = fAdapter
+                    pbOther.visibility = View.GONE
+
                 }
             }
 
@@ -80,7 +102,9 @@ class GalleryFragment : Fragment() {
             val list: ArrayList<GalleryData> = arrayListOf()
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
-                    Toast.makeText(context, "No data found", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(context, "No data found", Toast.LENGTH_LONG).show()
+                    pbRepublic.visibility = View.GONE
+                    txtRepublicNoData.visibility = View.VISIBLE
                 } else {
                     for (i in snapshot.children) {
                         val data = i.getValue(GalleryData::class.java)
@@ -91,6 +115,7 @@ class GalleryFragment : Fragment() {
                     fAdapter = GalleryAdapter(this@GalleryFragment, list)
                     republicDayRV.layoutManager = GridLayoutManager(context, 3)
                     republicDayRV.adapter = fAdapter
+                    pbRepublic.visibility = View.GONE
                 }
             }
 
@@ -107,7 +132,9 @@ class GalleryFragment : Fragment() {
             val list: ArrayList<GalleryData> = arrayListOf()
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
-                    Toast.makeText(context, "No data found", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(context, "No data found", Toast.LENGTH_LONG).show()
+                    pbINdependence.visibility = View.GONE
+                    txtIndependenceNoData.visibility = View.VISIBLE
                 } else {
                     for (i in snapshot.children) {
                         val data = i.getValue(GalleryData::class.java)
@@ -118,6 +145,7 @@ class GalleryFragment : Fragment() {
                     fAdapter = GalleryAdapter(this@GalleryFragment, list)
                     independenceDayRV.layoutManager = GridLayoutManager(context, 3)
                     independenceDayRV.adapter = fAdapter
+                    pbINdependence.visibility = View.GONE
                 }
             }
 
@@ -134,7 +162,9 @@ class GalleryFragment : Fragment() {
             val list: ArrayList<GalleryData> = arrayListOf()
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
-                    Toast.makeText(context, "No data found", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(context, "No data found", Toast.LENGTH_LONG).show()
+                    pbAnnual.visibility = View.GONE
+                    txtAnnualNoData.visibility = View.VISIBLE
                 } else {
                     for (i in snapshot.children) {
                         val data = i.getValue(GalleryData::class.java)
@@ -145,6 +175,7 @@ class GalleryFragment : Fragment() {
                     fAdapter = GalleryAdapter(this@GalleryFragment, list)
                     annualFunctionRV.layoutManager = GridLayoutManager(context, 3)
                     annualFunctionRV.adapter = fAdapter
+                    pbAnnual.visibility = View.GONE
                 }
             }
 

@@ -1,10 +1,13 @@
 package com.akstudios.userapp.ui.gallery
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.akstudios.userapp.FullImageView
 import com.akstudios.userapp.R
 import com.bumptech.glide.Glide
 
@@ -22,6 +25,12 @@ class GalleryAdapter(private val context: GalleryFragment, private val list: Arr
 
     override fun onBindViewHolder(holder: GalleryViewHolder, position: Int) {
         Glide.with(context).load(list[position].url).into(holder.imageView)
+
+        holder.imageView.setOnClickListener {
+            val intent = Intent(context.requireContext(), FullImageView::class.java)
+            intent.putExtra("image", list[position].url)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

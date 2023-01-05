@@ -24,14 +24,20 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cseRV"
-                android:nestedScrollingEnabled="false"
-                android:visibility="gone"/>
+                android:id="@+id/mathsRV"
+                android:nestedScrollingEnabled="false" />
+            <ProgressBar
+                android:id="@+id/pbMaths"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25sp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/cseNoData">
+                android:id="@+id/mathsNoData"
+                android:visibility="gone">
                 <include layout="@layout/no_data_available"/>
             </LinearLayout>
             <View
@@ -52,14 +58,20 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/meRV"
-                android:nestedScrollingEnabled="false"
-                android:visibility="gone"/>
+                android:id="@+id/scienceRV"
+                android:nestedScrollingEnabled="false" />
+            <ProgressBar
+                android:id="@+id/pbScience"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25sp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/meNoData">
+                android:id="@+id/scienceNoData"
+                android:visibility="gone">
                 <include layout="@layout/no_data_available"/>
             </LinearLayout>
             <View
@@ -78,14 +90,20 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/eceRV"
-                android:nestedScrollingEnabled="false"
-                android:visibility="gone"/>
+                android:id="@+id/englishRV"
+                android:nestedScrollingEnabled="false" />
+            <ProgressBar
+                android:id="@+id/pbEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25sp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/eceNoData">
+                android:id="@+id/englishNoData"
+                android:visibility="gone">
                 <include layout="@layout/no_data_available"/>
             </LinearLayout>
             <View

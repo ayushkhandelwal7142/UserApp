@@ -8,16 +8,22 @@ import android.os.Looper
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import android.widget.Toast
 import com.akstudios.userapp.MainActivity
 import com.akstudios.userapp.R
+import com.akstudios.userapp.loginScreen.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class SplashScreen : AppCompatActivity() {
     private lateinit var schoolName: TextView
     private lateinit var appType: TextView
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         schoolName = findViewById(R.id.schoolName)
         appType = findViewById(R.id.adminApp)
@@ -28,10 +34,16 @@ class SplashScreen : AppCompatActivity() {
 
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed( {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, 5000)
-
+            if (firebaseAuth.currentUser != null) {
+                Toast.makeText(this, "Admin is already logged in!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }, 3000)
     }
 }

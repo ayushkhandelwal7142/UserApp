@@ -1,12 +1,14 @@
 package com.akstudios.userapp.ui.notice
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.akstudios.userapp.FullImageView
 import com.akstudios.userapp.R
 import com.bumptech.glide.Glide
 
@@ -29,6 +31,13 @@ class NoticeAdapter(private val context: NoticeFragment, private val noticeData:
          holder.noticeTitle.text = noticeData[position].title
          holder.noticeDate.text = noticeData[position].date
          holder.noticeTime.text = noticeData[position].time
+
+         holder.noticeImage.setOnClickListener {
+             val url = noticeData[position].imageUrl
+             val intent = Intent(context.requireContext(), FullImageView::class.java)
+             intent.putExtra("image", url)
+             context.startActivity(intent)
+         }
      }
 
      override fun getItemCount(): Int {

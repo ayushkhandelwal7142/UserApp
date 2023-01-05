@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@ import com.google.firebase.database.*
 class NoticeFragment : Fragment() {
 
     private lateinit var noticeRV: RecyclerView
+    private lateinit var progressBar: ProgressBar
     private var noticeData: ArrayList<NoticeData> = arrayListOf()
     private lateinit var databaseReference: DatabaseReference
 
@@ -24,6 +26,7 @@ class NoticeFragment : Fragment() {
 
         databaseReference = FirebaseDatabase.getInstance().reference.child("Notice")
         noticeRV = view.findViewById(R.id.noticeRV)
+        progressBar = view.findViewById(R.id.progressBar)
         getData()
         return view
     }
@@ -43,6 +46,7 @@ class NoticeFragment : Fragment() {
                         noticeRV.apply {
                             layoutManager = LinearLayoutManager(context)
                             adapter = NoticeAdapter(this@NoticeFragment, noticeData)
+                            progressBar.visibility = View.GONE
                         }
                     }
                 }
