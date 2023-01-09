@@ -1,5 +1,7 @@
 package com.akstudios.userapp
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -12,12 +14,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.akstudios.userapp.loginScreen.LoginActivity
 import com.akstudios.userapp.notiication.Constants
 import com.akstudios.userapp.ui.ebook.EbookActivity
 import com.akstudios.userapp.ui.ebook.EbookAdapter
 import com.akstudios.userapp.ui.videoLectures.VideoLecturesActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var actionBarToggle: ActionBarDrawerToggle
     private lateinit var navigationDrawer: NavigationView
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,9 +47,10 @@ class MainActivity : AppCompatActivity() {
         actionBarToggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
+        firebaseAuth = FirebaseAuth.getInstance()
 
         navigationDrawer.setNavigationItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.navigation_video -> {
                     val intent = Intent(this, VideoLecturesActivity::class.java)
                     startActivity(intent)
@@ -54,15 +60,64 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(Intent.ACTION_VIEW)
                     intent.data = Uri.parse(url)
                 }
-                R.id.navigation_website -> Toast.makeText(applicationContext, "Website", Toast.LENGTH_LONG).show()
-                R.id.navigation_review -> Toast.makeText(applicationContext, "Review", Toast.LENGTH_LONG).show()
-                R.id.navigation_eBook-> {
-                val intent = Intent(this, EbookActivity::class.java)
-                startActivity(intent)
+                R.id.navigation_website -> Toast.makeText(
+                    applicationContext,
+                    "Website",
+                    Toast.LENGTH_LONG
+                ).show()
+                R.id.navigation_review -> Toast.makeText(
+                    applicationContext,
+                    "Review",
+                    Toast.LENGTH_LONG
+                ).show()
+                R.id.navigation_eBook -> {
+                    val intent = Intent(this, EbookActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.navigation_log_out -> {
+                    logOut()
                 }
             }
             true
         }
+    }
+
+    private fun logOut() {
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.apply {
+            setTitle("Sign Out?")
+            setMessage("Do you really want to sign out?")
+            setPositiveButton("Yes", object : DialogInterface.OnClickListener {
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    if (firebaseAuth.currentUser != null) {
+                        firebaseAuth.signOut()
+                        if (firebaseAuth.currentUser == null) {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "User signed out successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Something went wrong. Please try again",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } else {
+                        Toast.makeText(this@MainActivity, "User not signed in", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                }
+            })
+            setNegativeButton("No", object : DialogInterface.OnClickListener {
+                override fun onClick(p0: DialogInterface?, p1: Int) {}
+            })
+        }.show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

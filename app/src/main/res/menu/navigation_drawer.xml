@@ -10,5 +10,7 @@
         android:title="Website"/>
     <item android:id="@+id/navigation_review"
         android:title="Rate Us"/>
+    <item android:id="@+id/navigation_log_out"
+        android:title="Log Out"/>
 
 </menu>
