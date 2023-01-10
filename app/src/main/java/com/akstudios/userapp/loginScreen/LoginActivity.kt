@@ -3,10 +3,7 @@ package com.akstudios.userapp.loginScreen
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.akstudios.userapp.MainActivity
 import com.akstudios.userapp.R
 import com.google.firebase.auth.FirebaseAuth
@@ -14,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var btnLogin: Button
+    private lateinit var btnLogin: ImageView
     private lateinit var btnSignUp: TextView
     private lateinit var etEmailAddress: EditText
     private lateinit var etPassword: EditText
