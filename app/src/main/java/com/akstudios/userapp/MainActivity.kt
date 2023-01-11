@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -56,6 +57,11 @@ class MainActivity : AppCompatActivity() {
         editor = sharedPreferences.edit()
 
         userName = sharedPreferences.getString("userName", "User").toString()
+        supportActionBar?.title = "Welcome $userName"
+        // setting user name in navigation view header layout
+        val header = navigationDrawer.getHeaderView(0)
+        header.findViewById<TextView>(R.id.txtUserName).text = "Hello $userName"
+
         navigationDrawer.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_video -> {
