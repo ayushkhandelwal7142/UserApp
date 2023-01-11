@@ -1,6 +1,5 @@
 package com.akstudios.userapp.ui.notice
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,14 @@ import com.akstudios.userapp.FullImageView
 import com.akstudios.userapp.R
 import com.bumptech.glide.Glide
 
-class NoticeAdapter(private val context: NoticeFragment, private val noticeData: ArrayList<NoticeData>):RecyclerView.Adapter<NoticeAdapter.NoticeDataViewHolder>() {
+class NoticeAdapter(private val context: NoticeFragment):RecyclerView.Adapter<NoticeAdapter.NoticeDataViewHolder>() {
+    private val noticeData: ArrayList<NoticeData?> = arrayListOf()
+
+    fun addAll(list: ArrayList<NoticeData?>) {
+        val initsize: Int = list.size
+        noticeData.addAll(list)
+        notifyItemRangeChanged(initsize, list.size)
+    }
     inner class NoticeDataViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val noticeImage: ImageView = itemView.findViewById(R.id.noticeImage)
         val noticeDate: TextView = itemView.findViewById(R.id.noticeDate)
@@ -27,13 +33,13 @@ class NoticeAdapter(private val context: NoticeFragment, private val noticeData:
      }
 
      override fun onBindViewHolder(holder: NoticeDataViewHolder, position: Int) {
-         Glide.with(context).load(noticeData[position].imageUrl).into(holder.noticeImage)
-         holder.noticeTitle.text = noticeData[position].title
-         holder.noticeDate.text = noticeData[position].date
-         holder.noticeTime.text = noticeData[position].time
+         Glide.with(context).load(noticeData[position]?.imageUrl).into(holder.noticeImage)
+         holder.noticeTitle.text = noticeData[position]?.title
+         holder.noticeDate.text = noticeData[position]?.date
+         holder.noticeTime.text = noticeData[position]?.time
 
          holder.noticeImage.setOnClickListener {
-             val url = noticeData[position].imageUrl
+             val url = noticeData[position]?.imageUrl
              val intent = Intent(context.requireContext(), FullImageView::class.java)
              intent.putExtra("image", url)
              context.startActivity(intent)

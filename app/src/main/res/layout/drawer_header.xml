@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="176dp">
+    android:padding="10sp"
+    android:layout_height="180sp"
+    android:orientation="vertical"
+    android:background="@color/teal_200">
 
     <ImageView
         android:id="@+id/navigation_header_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/ic_school"
-        android:background="@color/purple_200"/>
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:src="@drawable/avtar"
+        android:layout_gravity="center" />
+    <TextView
+        android:id="@+id/txtUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30sp"
+        android:text="Hello User"/>
 </LinearLayout>

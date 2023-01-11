@@ -3,6 +3,7 @@ package com.akstudios.userapp
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
@@ -17,12 +18,12 @@ import androidx.navigation.ui.NavigationUI
 import com.akstudios.userapp.loginScreen.LoginActivity
 import com.akstudios.userapp.notiication.Constants
 import com.akstudios.userapp.ui.ebook.EbookActivity
-import com.akstudios.userapp.ui.ebook.EbookAdapter
 import com.akstudios.userapp.ui.videoLectures.VideoLecturesActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessaging
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +33,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var actionBarToggle: ActionBarDrawerToggle
     private lateinit var navigationDrawer: NavigationView
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
+    private lateinit var userName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +52,10 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
         firebaseAuth = FirebaseAuth.getInstance()
+        sharedPreferences = getSharedPreferences("login", MODE_PRIVATE)
+        editor = sharedPreferences.edit()
 
+        userName = sharedPreferences.getString("userName", "User").toString()
         navigationDrawer.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_video -> {
