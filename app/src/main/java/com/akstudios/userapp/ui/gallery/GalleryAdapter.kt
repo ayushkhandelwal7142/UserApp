@@ -1,13 +1,12 @@
 package com.akstudios.userapp.ui.gallery
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.akstudios.userapp.FullImageView
+import com.akstudios.userapp.ui.FullImageView
 import com.akstudios.userapp.R
 import com.bumptech.glide.Glide
 

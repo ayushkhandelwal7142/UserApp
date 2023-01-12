@@ -1,4 +1,4 @@
-package com.akstudios.userapp.notiication
+package com.akstudios.userapp.constants
 
 class Constants {
     companion object {

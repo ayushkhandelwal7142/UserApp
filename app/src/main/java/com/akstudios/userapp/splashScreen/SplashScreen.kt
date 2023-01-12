@@ -1,4 +1,4 @@
-package com.akstudios.userapp.ui.splashScreen
+package com.akstudios.userapp.splashScreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -24,18 +24,18 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         firebaseAuth = FirebaseAuth.getInstance()
-
         schoolName = findViewById(R.id.schoolName)
         appType = findViewById(R.id.adminApp)
+
         val schoolNameAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.animation2)
-        val appTypeAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.animation1)
+        //val appTypeAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.animation1)
         schoolName.startAnimation(schoolNameAnim)
         //appType.startAnimation(appTypeAnim)
 
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed( {
             if (firebaseAuth.currentUser != null) {
-                Toast.makeText(this, "User is already logged in!", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "User is already logged in!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()

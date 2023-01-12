@@ -1,4 +1,6 @@
-package com.akstudios.userapp.notiication;
+package com.akstudios.userapp.notiication.api;
+
+import com.akstudios.userapp.constants.Constants;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

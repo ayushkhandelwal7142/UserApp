@@ -1,8 +1,8 @@
-package com.akstudios.userapp
+package com.akstudios.userapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
+import com.akstudios.userapp.R
 import com.bumptech.glide.Glide
 import com.github.chrisbanes.photoview.PhotoView
 

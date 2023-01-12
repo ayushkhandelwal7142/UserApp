@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
@@ -17,7 +18,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.akstudios.userapp.loginScreen.LoginActivity
-import com.akstudios.userapp.notiication.Constants
+import com.akstudios.userapp.constants.Constants
 import com.akstudios.userapp.ui.ebook.EbookActivity
 import com.akstudios.userapp.ui.videoLectures.VideoLecturesActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         FirebaseMessaging.getInstance().subscribeToTopic(Constants.TOPIC) //Notification using API whenever new data is uploaded.
         FirebaseMessaging.getInstance().subscribeToTopic("Notification") // FCM push notifications
+
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         navController = Navigation.findNavController(this, R.id.frame_layout)
         drawerLayout = findViewById(R.id.drawer_layout)
@@ -54,22 +56,28 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
         firebaseAuth = FirebaseAuth.getInstance()
-        sharedPreferences = getSharedPreferences("login", MODE_PRIVATE)
-        editor = sharedPreferences.edit()
-
-        userName = sharedPreferences.getString("userName", "User").toString()
-        supportActionBar?.title = "Welcome $userName"
-        // setting user name in navigation view header layout
-        val header = navigationDrawer.getHeaderView(0)
-        header.findViewById<TextView>(R.id.txtUserName).text = "Hello $userName"
 
         // check if user is logged in or not
         if (firebaseAuth.currentUser == null) {
+            Log.d("AK_STUDIOS", "User not logged in")
             Toast.makeText(this, "Please login to continue", Toast.LENGTH_LONG).show()
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
+
+        // to save user name with shared preference
+        sharedPreferences = getSharedPreferences("login", MODE_PRIVATE)
+        editor = sharedPreferences.edit()
+
+        userName = sharedPreferences.getString("userName", "User").toString() // get user name
+        supportActionBar?.title = "Welcome $userName"
+        Log.d("AK_STUDIOS: UserName", userName)
+
+        // setting user name in navigation view header layout
+        val header = navigationDrawer.getHeaderView(0)
+        header.findViewById<TextView>(R.id.txtUserName).text = "Hello $userName"
+
         navigationDrawer.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_video -> {

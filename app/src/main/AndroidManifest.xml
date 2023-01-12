@@ -22,7 +22,7 @@
             android:name=".ui.videoLectures.VideoLecturesActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.splashScreen.SplashScreen"
+            android:name=".splashScreen.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.UserApp_Splash">
             <intent-filter>
@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FullImageView"
+            android:name=".ui.FullImageView"
             android:exported="false" />
         <activity
             android:name=".ui.ebook.PdfViewerActivity"
