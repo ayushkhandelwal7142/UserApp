@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        FirebaseMessaging.getInstance().subscribeToTopic(Constants.TOPIC)
+        FirebaseMessaging.getInstance().subscribeToTopic(Constants.TOPIC) //Notification using API whenever new data is uploaded.
+        FirebaseMessaging.getInstance().subscribeToTopic("Notification") // FCM push notifications
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         navController = Navigation.findNavController(this, R.id.frame_layout)
         drawerLayout = findViewById(R.id.drawer_layout)
@@ -62,6 +63,13 @@ class MainActivity : AppCompatActivity() {
         val header = navigationDrawer.getHeaderView(0)
         header.findViewById<TextView>(R.id.txtUserName).text = "Hello $userName"
 
+        // check if user is logged in or not
+        if (firebaseAuth.currentUser == null) {
+            Toast.makeText(this, "Please login to continue", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         navigationDrawer.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_video -> {

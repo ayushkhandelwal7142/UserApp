@@ -35,7 +35,7 @@ class SplashScreen : AppCompatActivity() {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed( {
             if (firebaseAuth.currentUser != null) {
-                Toast.makeText(this, "Admin is already logged in!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "User is already logged in!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
