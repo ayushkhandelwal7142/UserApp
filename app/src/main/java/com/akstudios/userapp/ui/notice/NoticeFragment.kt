@@ -113,6 +113,7 @@ class NoticeFragment : Fragment() {
                         progressBar.visibility = View.GONE
                     } else  //reach to end no further child avaialable to show
                     {
+                        progressBar.visibility = View.GONE
                         isMaxData = true
                     }
                     scrollingPB.visibility = View.GONE
