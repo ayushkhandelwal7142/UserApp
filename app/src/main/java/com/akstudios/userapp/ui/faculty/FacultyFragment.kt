@@ -70,7 +70,7 @@ class FacultyFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
                     pbMAths.visibility = View.GONE
-                   mathsDeptRV.visibility = View.VISIBLE
+                   mathsNoData.visibility = View.VISIBLE
                 } else {
                     for (i in snapshot.children) {
                         val data = i.getValue(FacultyData::class.java)
@@ -125,7 +125,7 @@ class FacultyFragment : Fragment() {
         })
     }
     private fun scienceDepartment() {
-        dbRef = databaseReference.child("Hindi")
+        dbRef = databaseReference.child("Science")
         dbRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
@@ -137,7 +137,7 @@ class FacultyFragment : Fragment() {
                         if (data != null) {
                             list3.add(data)
                         }
-                        fAdapter = FacultyAdapter(list3, "Hindi", this@FacultyFragment)
+                        fAdapter = FacultyAdapter(list3, "Science", this@FacultyFragment)
                         scienceDeptRV.apply {
                             setHasFixedSize(true)
                             layoutManager = LinearLayoutManager(context)

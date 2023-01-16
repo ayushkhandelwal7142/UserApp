@@ -136,7 +136,7 @@ class NoticeFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (lastkey in snapshot.children) {
                     lastKey = lastkey.key.toString()
-                    Toast.makeText(getContext(), "last_key $lastKey", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(getContext(), "last_key $lastKey", Toast.LENGTH_SHORT).show()
                     Log.d("LastKey = ", lastKey)
                 }
             }

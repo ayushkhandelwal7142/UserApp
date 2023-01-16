@@ -85,9 +85,10 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.navigation_attendance -> {
-                    val url = ""  // logged in users' class
+                    val url = getString(R.string.attendance_spreadsheet_url)  // logged in users' class
                     val intent = Intent(Intent.ACTION_VIEW)
                     intent.data = Uri.parse(url)
+                    startActivity(intent)
                 }
                 R.id.navigation_website -> Toast.makeText(
                     applicationContext,
